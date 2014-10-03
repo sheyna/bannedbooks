@@ -1,0 +1,191 @@
+body {
+  background-color: #E2F1F0;
+}
+h1 {
+  font-family: 'Forum', cursive;
+  font-size: 36px;
+  text-align: center;
+  color: #42938E;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+h2 {
+  font-family: 'Gafata', sans-serif;
+  font-size: 16px;
+  text-align: center;
+  color: #755e57;
+}
+li {
+  font-family: 'Gafata', sans-serif;
+  font-size: 11px;
+  text-align: center;
+  color: #755e57;
+}
+a {
+  color: #42938E;
+}
+a:hover {
+  color: #A14860;
+}
+button {
+  color: #42938E;
+  margin: auto;
+}
+footer {
+  font-family: 'Gafata', sans-serif;
+  font-size: 12px;
+  text-align: center;
+  color: #755e57;
+  margin-bottom: 80px;
+}
+ul {
+  list-style-type: none;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+.buttons {
+  position: relative;
+  width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+.sortingTable {
+  width: 800px;
+  background-color: #FFF6EF;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0px 0px 60px #CAE3E1;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  margin-top: 10px;
+}
+.card {
+  width: 135px;
+  position: relative;
+  display: inline-block;
+  vertical-align: text-top;
+  margin: 10px;
+}
+.bookcover {
+  position: relative;
+  vertical-align: text-top;
+  width: 98px;
+  height: 139px;
+  border: 1px solid #9CAAA9;
+  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+}
+.swapping {
+  background-color: #F8DDE4;
+}
+.toolbar {
+  height: 0px;
+  margin: 0;
+  padding: 0;
+}
+.tools {
+  background: #e6f6d8;
+  border: 1px solid #CCC;
+  margin: 0 0 10px;
+  z-index: 100;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+#backgroundimage {
+  background-image: url('../images/headerimage.jpg');
+  background-repeat: no-repeat;
+  background-position: -15px -25px;
+  background-attachment: fixed;
+  width: 102%;
+  height: 240px;
+  margin-top: -10px;
+  margin-right: -5px;
+  margin-left: -10px;
+}
+
+
+/* book cover images */
+#book0 {
+  background-image: url('../images/book0.jpg');
+}
+#book1 {
+  background-image: url('../images/book1.jpg');
+}
+#book2 {
+  background-image: url('../images/book2.jpg');
+}
+#book3 {
+  background-image: url('../images/book3.jpg');
+}
+#book4 {
+  background-image: url('../images/book4.jpg');
+}
+#book5 {
+  background-image: url('../images/book5.jpg');
+}
+#book6 {
+  background-image: url('../images/book6.jpg');
+}
+#book7 {
+  background-image: url('../images/book7.jpg');
+}
+#book8 {
+  background-image: url('../images/book8.jpg');
+}
+#book9 {
+  background-image: url('../images/book9.jpg');
+}
+#book10 {
+  background-image: url('../images/book10.jpg');
+}
+#book11 {
+  background-image: url('../images/book11.jpg');
+}
+#book12 {
+  background-image: url('../images/book12.jpg');
+}
+#book13 {
+  background-image: url('../images/book13.jpg');
+}
+#book14 {
+  background-image: url('../images/book14.jpg');
+}
+#book15 {
+  background-image: url('../images/book15.jpg');
+}
+#book16 {
+  background-image: url('../images/book16.jpg');
+}
+#book17 {
+  background-image: url('../images/book17.jpg');
+}
+#book18 {
+  background-image: url('../images/book18.jpg');
+}
+#book19 {
+  background-image: url('../images/book19.jpg');
+}
+#book20 {
+  background-image: url('../images/book20.jpg');
+}
+#book21 {
+  background-image: url('../images/book21.jpg');
+}
+#book22 {
+  background-image: url('../images/book22.jpg');
+}
+#book23 {
+  background-image: url('../images/book23.jpg');
+}
+#book24 {
+  background-image: url('../images/book24.jpg');
+}
