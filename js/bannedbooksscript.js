@@ -1,5 +1,6 @@
 // var counter = 0;
 // var sorted;
+var sortingTimer;
 
 // BROOK'S SHUFFLE FUNCTION FROM CLASS:
 
@@ -33,16 +34,25 @@ $('button#shuffle').on('click', function() {
   shuffle($('.card').length - 1);
 });
 
+// ------------------------MY WORK:------------------------
+
 // INSERTION SORTING FUNCTION:
 
 function sortRankSlow(m, item) { /* start 1 */
   // sorted = false;
   for (var i = 1; i < m; i++) { /* start 2 */
+
+    // gets value of x so it can be compared in the While loop
     var x = $('.card:eq(' + i + ')').attr('' + item + '');
+
+    // adds pink highlight to the to active books:
     $('.card:eq(' + i + ')').addClass('swapping').fadeIn('slow');
     $('.card:eq(' + ( i - 1 ) + ')').addClass('swapping').fadeIn('slow');
+
+    // sets j so it can later be compared to x in the while loop:
     var j = i;
 
+    // puts "x" ahead of the book before it if it is greater than x:
     while (j > 0 && $('.card:eq(' + ( j - 1 ) + ')').attr('' + item + '') > x) { /* start while loop */
       $('.card:eq(' + j + ')').insertBefore($('.card:eq(' + ( j - 1 ) + ')')).fadeIn('slow');
 
@@ -51,94 +61,53 @@ function sortRankSlow(m, item) { /* start 1 */
             return k;
         }
 
-      j -= 1;
+      j -= 1; // devaluates j before While loop loops back
 
     } /* End while loop */
 
-    $('li').removeClass('swapping');
-
-    // if ($('.card:eq(' + ( j - 1 ) + ')').attr('' + item + '') < x) {
-    //   counter += 1;
-    // }
-
-    // if (i == (m - 1)) {
-    //   clearInterval(sortRankSlow);
-    // }
+    $('li').removeClass('swapping'); // removes pink highlight
 
   } /* End 2 */
 
-  sortReset(); // Currently does not work
-
-  // clearInterval(sortRankSlow);
-
-  // sorted = true;
-
-  // if (counter == 25) {
-  //  window.clearInterval(sortRankSlow);
-  //  counter = 0;
-  // }
+  sortReset(); // Ends setInterval timer
 
 } /* End 1 */
 
-// RESENT FUNCTION (currently does not work):
+// RESET SORTINGTIMER FUNCTION :
 
 function sortReset() {
-  window.clearInterval(sortRankSlow);
+  window.clearInterval(sortingTimer);
 }
 
-// MIDDLEMAN FUNCTIONS
-// launch the sorting function with the correct perameters:
+// MIDDLEMAN FUNCTIONS:
+// Launches the sorting function with the correct perameters.
+// This is necessary because if it is all done inside the buttons
+// below the sort happens to quickly.
 
 function slowMoRank() {
   sortRankSlow($('.card').length, 'id');
-  // clearInterval(sortRankSlow);
-
-  // if (counter == 25) {
-  //   clearInterval(sortRankSlow);
-  //   counter = 0;
-  // }
 }
 
 function slowMoTitle() {
   sortRankSlow($('.card').length, 'title');
-  // if (counter == 25) {
-  //   clearInterval(sortRankSlow);
-  //   counter = 0;
-  // }
 }
 
 function slowMoAuthor() {
   sortRankSlow($('.card').length, 'class');
-  // if (counter == 25) {
-  //   clearInterval(sortRankSlow);
-  //   counter = 0;
-  // }
 }
 
 // BUTTON CALLS:
 
 $('button#mostBanned').on('click', function() {
-  setInterval(slowMoRank, 200);
-  // if (counter == 25) {
-  //   clearInterval(sortRankSlow);
-  //   counter = 0;
-  // }
+  sortingTimer = setInterval(slowMoRank, 200);
 });
 
 $('button#author').on('click', function() {
-  setInterval(slowMoAuthor, 200);
-  // if (counter == 25) {
-  //   clearInterval(sortRankSlow);
-  //   counter = 0;
-  // }
+  sortingTimer = setInterval(slowMoAuthor, 200);
 });
 
 $('button#byTitle').on('click', function() {
-  setInterval(slowMoTitle, 200);
-  // if (counter == 25) {
-  //   clearInterval(sortRankSlow);
-  //   counter = 0;
-  // }
+  sortingTimer = setInterval(slowMoTitle, 200);
 });
 
 // CREATES THE BOOKS:
