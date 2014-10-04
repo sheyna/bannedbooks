@@ -1,3 +1,8 @@
+// var counter = 0;
+// var sorted;
+
+// BROOK'S SHUFFLE FUNCTION FROM CLASS:
+
 // shuffle books:
 function shuffle(m) {
   // swap last card with a random card from left
@@ -28,67 +33,115 @@ $('button#shuffle').on('click', function() {
   shuffle($('.card').length - 1);
 });
 
+// INSERTION SORTING FUNCTION:
 
-// look up call backs
-
-
-// Insertion Sort function:
-function sortRank(m, item) { /* start 1 */
-for (var i = 1; i < m; i++) { /* start 2 */
-  // setTimeout(sortRank, 18000);
+function sortRankSlow(m, item) { /* start 1 */
+  // sorted = false;
+  for (var i = 1; i < m; i++) { /* start 2 */
     var x = $('.card:eq(' + i + ')').attr('' + item + '');
     $('.card:eq(' + i + ')').addClass('swapping').fadeIn('slow');
     $('.card:eq(' + ( i - 1 ) + ')').addClass('swapping').fadeIn('slow');
     var j = i;
 
-                // console.log(x);
-
     while (j > 0 && $('.card:eq(' + ( j - 1 ) + ')').attr('' + item + '') > x) { /* start while loop */
       $('.card:eq(' + j + ')').insertBefore($('.card:eq(' + ( j - 1 ) + ')')).fadeIn('slow');
+
+        // hack to slow the process:
         for (var k = 1; k < 200; i++) {
-           return k;
-         }
-      // setTimeout(timersort, 500, [j]);
-
-
-                // if ($('.card:eq(' + ( j - 1 ) + ')').attr('' + item + '') > x) {
-                //   console.log($('.card:eq(' + ( j - 1 ) + ')').attr('' + item + '') + ' > ' + x);
-                // } else {
-                //   console.log($('.card:eq(' + ( j - 1 ) + ')').attr('' + item + '') + ' < ' + x)
-                // }
+            return k;
+        }
 
       j -= 1;
 
     } /* End while loop */
 
-    // if (i < m) {
-    //   setTimeout(sortRank, 4000);
-    // } else {
-      $('li').removeClass('swapping');
-    // };
+    $('li').removeClass('swapping');
+
+    // if ($('.card:eq(' + ( j - 1 ) + ')').attr('' + item + '') < x) {
+    //   counter += 1;
+    // }
+
+    // if (i == (m - 1)) {
+    //   clearInterval(sortRankSlow);
+    // }
+
   } /* End 2 */
+
+  sortReset(); // Currently does not work
+
+  // clearInterval(sortRankSlow);
+
+  // sorted = true;
+
+  // if (counter == 25) {
+  //  window.clearInterval(sortRankSlow);
+  //  counter = 0;
+  // }
+
 } /* End 1 */
 
+// RESENT FUNCTION (currently does not work):
 
-function timersort(j) {
-  $('.card:eq(' + j + ')').insertBefore($('.card:eq(' + ( j - 1 ) + ')')).fadeIn('slow');
-};
+function sortReset() {
+  window.clearInterval(sortRankSlow);
+}
 
+// MIDDLEMAN FUNCTIONS
+// launch the sorting function with the correct perameters:
 
+function slowMoRank() {
+  sortRankSlow($('.card').length, 'id');
+  // clearInterval(sortRankSlow);
 
+  // if (counter == 25) {
+  //   clearInterval(sortRankSlow);
+  //   counter = 0;
+  // }
+}
+
+function slowMoTitle() {
+  sortRankSlow($('.card').length, 'title');
+  // if (counter == 25) {
+  //   clearInterval(sortRankSlow);
+  //   counter = 0;
+  // }
+}
+
+function slowMoAuthor() {
+  sortRankSlow($('.card').length, 'class');
+  // if (counter == 25) {
+  //   clearInterval(sortRankSlow);
+  //   counter = 0;
+  // }
+}
+
+// BUTTON CALLS:
 
 $('button#mostBanned').on('click', function() {
-  sortRank($('.card').length, 'id');
+  setInterval(slowMoRank, 200);
+  // if (counter == 25) {
+  //   clearInterval(sortRankSlow);
+  //   counter = 0;
+  // }
 });
 
 $('button#author').on('click', function() {
-  sortRank($('.card').length, 'class');
+  setInterval(slowMoAuthor, 200);
+  // if (counter == 25) {
+  //   clearInterval(sortRankSlow);
+  //   counter = 0;
+  // }
 });
 
 $('button#byTitle').on('click', function() {
-  sortRank($('.card').length, 'title');
+  setInterval(slowMoTitle, 200);
+  // if (counter == 25) {
+  //   clearInterval(sortRankSlow);
+  //   counter = 0;
+  // }
 });
 
+// CREATES THE BOOKS:
 
 function Books() {
   this.bookID = ['book0', 'book1', 'book2', 'book3', 'book4', 'book5',
@@ -121,19 +174,20 @@ function Books() {
     "by Yoko Watkins", "by Walter Dean Myers", "by Judy Blume", "by John Grisham",
     "by Khaled Hosseini", "by Laurie Halse Anderson", "by Mildred Taylor",
     "by Ray Bradbury"];
+  // "x" on the end of the first "Blume" prevents sorting errors:
   this.bookAuthorLastName = ["L'Engle", "Steinbeck", "Peck", "Rowling", "Lowry",
-    "Nix", "Collier", "Guterson", "Paterson", "George", "Twain", "Blume", "Lee",
+    "Nix", "Collier", "Guterson", "Paterson", "George", "Twain", "Blumex", "Lee",
     "Von Ziegesar", "Chbosky", "Angelou", "Avi", "Watkins", "Myers", "Blume",
     "Grisham", "Hosseini", "Anderson", "Taylor", "Bradbury"];
 
 
-  // For Loop version
+  // For Loop print on page
   for (var i = 0; i < this.bookID.length; i++) {
     $('#books').append('<li id="' + this.bookRank[i] + '" class="' + this.bookAuthorLastName[i] + ' \
       card" title="' + this.bookTitleSort[i] + '"><div class="bookcover" title="' + this.bookTitle[i] + '" \
         id="' + this.bookID[i] + '"></div>' + this.bookRank[i]+ '. ' + this.bookTitle[i] + '<br />\
         ' + this.bookAtribution[i] + '</li>');
   }
-}; // closes Books()
+} // closes Books()
 
 var book = new Books();
