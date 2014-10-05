@@ -36,7 +36,7 @@ $('button#shuffle').on('click', function() {
 
 // ------------------------MY WORK:------------------------
 
-// INSERTION SORTING FUNCTION:
+// INSERTION SORTING FUNCTION (for letters):
 
 function sortRankSlow(m, item) { /* start 1 */
   // sorted = false;
@@ -73,6 +73,44 @@ function sortRankSlow(m, item) { /* start 1 */
 
 } /* End 1 */
 
+
+// INSERTION SORTING FUNCTION (for numbers):
+
+function sortRankSlowNumbers(m) { /* start 1 */
+  // sorted = false;
+  for (var i = 1; i < m; i++) { /* start 2 */
+
+    // gets value of x so it can be compared in the While loop
+    var x = parseInt($('.card:eq(' + i + ')').attr('id'));
+
+    // adds pink highlight to the to active books:
+    $('.card:eq(' + i + ')').addClass('swapping').fadeIn('slow');
+    $('.card:eq(' + ( i - 1 ) + ')').addClass('swapping').fadeIn('slow');
+
+    // sets j so it can later be compared to x in the while loop:
+    var j = i;
+
+    // puts "x" ahead of the book before it if it is greater than x:
+    while (j > 0 && parseInt($('.card:eq(' + ( j - 1 ) + ')').attr('id')) > x) { /* start while loop */
+      $('.card:eq(' + j + ')').insertBefore($('.card:eq(' + ( j - 1 ) + ')')).fadeIn('slow');
+
+        // hack to slow the process:
+        for (var k = 1; k < 200; i++) {
+            return k;
+        }
+
+      j -= 1; // devaluates j before While loop loops back
+
+    } /* End while loop */
+
+    $('li').removeClass('swapping'); // removes pink highlight
+
+  } /* End 2 */
+
+  sortReset(); // Ends setInterval timer
+
+} /* End 1 */
+
 // RESET SORTINGTIMER FUNCTION :
 
 function sortReset() {
@@ -85,7 +123,7 @@ function sortReset() {
 // below the sort happens to quickly.
 
 function slowMoRank() {
-  sortRankSlow($('.card').length, 'id');
+  sortRankSlowNumbers($('.card').length);
 }
 
 function slowMoTitle() {
@@ -117,8 +155,8 @@ function Books() {
     'book6', 'book7', 'book8', 'book9', 'book10', 'book11', 'book12',
     'book13', 'book14', 'book15', 'book16', 'book17', 'book18', 'book19',
     'book20', 'book21', 'book22', 'book23', 'book24'];
-  this.bookRank = [90, 5, 80, 1, 23, 95, 27, 33, 28, 91, 14,
-    16, 21, 22, 10, 6, 42, 84, 11, 43, 67, 50, 60, 66, 69];
+  this.bookRank = [90, 05, 80, 01, 23, 95, 27, 33, 28, 91, 14,
+    16, 21, 22, 10, 06, 42, 84, 11, 43, 67, 50, 60, 66, 69];
   this.bookTitle = ["A Wrinkle in Time", "Of Mice and Men", "A Day No Pigs Would Die",
     "Harry Potter (series)", "The Giver", "Shade's Children", "My Brother Sam Is Dead",
     "Snow Falling on Cedars", "Bridge To Terabithia", "Julie of the Wolves",
