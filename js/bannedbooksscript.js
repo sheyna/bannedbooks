@@ -36,7 +36,7 @@ $('button#shuffle').on('click', function() {
 
 // ------------------------MY WORK:------------------------
 
-// INSERTION SORTING FUNCTION (for letters):
+// INSERTION SORTING FUNCTION:
 
 function sortRankSlow(m, item) { /* start 1 */
   // sorted = false;
@@ -52,56 +52,37 @@ function sortRankSlow(m, item) { /* start 1 */
     // sets j so it can later be compared to x in the while loop:
     var j = i;
 
-    // puts "x" ahead of the book before it if it is greater than x:
-    while (j > 0 && $('.card:eq(' + ( j - 1 ) + ')').attr('' + item + '') > x) { /* start while loop */
-      $('.card:eq(' + j + ')').insertBefore($('.card:eq(' + ( j - 1 ) + ')')).fadeIn('slow');
+    if (item == 'id') {
+      // gets value of y so it can be compared in the While loop
+      var y = parseInt($('.card:eq(' + i + ')').attr('id'));
 
-        // hack to slow the process:
-        for (var k = 1; k < 200; i++) {
-            return k;
-        }
+      // puts "y" ahead of the book before it if it is greater than x:
+      while (j > 0 && parseInt($('.card:eq(' + ( j - 1 ) + ')').attr('id')) > y) { /* start while loop */
+        $('.card:eq(' + j + ')').insertBefore($('.card:eq(' + ( j - 1 ) + ')')).fadeIn('slow');
 
-      j -= 1; // devaluates j before While loop loops back
+          // hack to slow the process:
+          for (var k = 1; k < 200; i++) {
+              return k;
+          }
 
-    } /* End while loop */
+        j -= 1; // devaluates j before While loop loops back
 
-    $('li').removeClass('swapping'); // removes pink highlight
+      } /* End while loop */
 
-  } /* End 2 */
+    } else {
+        // puts "x" ahead of the book before it if it is greater than x:
+      while (j > 0 && $('.card:eq(' + ( j - 1 ) + ')').attr('' + item + '') > x) { /* start while loop */
+        $('.card:eq(' + j + ')').insertBefore($('.card:eq(' + ( j - 1 ) + ')')).fadeIn('slow');
 
-  sortReset(); // Ends setInterval timer
+          // hack to slow the process:
+          for (var k = 1; k < 200; i++) {
+              return k;
+          }
 
-} /* End 1 */
+        j -= 1; // devaluates j before While loop loops back
 
-
-// INSERTION SORTING FUNCTION (for numbers):
-
-function sortRankSlowNumbers(m) { /* start 1 */
-  // sorted = false;
-  for (var i = 1; i < m; i++) { /* start 2 */
-
-    // gets value of x so it can be compared in the While loop
-    var x = parseInt($('.card:eq(' + i + ')').attr('id'));
-
-    // adds pink highlight to the to active books:
-    $('.card:eq(' + i + ')').addClass('swapping').fadeIn('slow');
-    $('.card:eq(' + ( i - 1 ) + ')').addClass('swapping').fadeIn('slow');
-
-    // sets j so it can later be compared to x in the while loop:
-    var j = i;
-
-    // puts "x" ahead of the book before it if it is greater than x:
-    while (j > 0 && parseInt($('.card:eq(' + ( j - 1 ) + ')').attr('id')) > x) { /* start while loop */
-      $('.card:eq(' + j + ')').insertBefore($('.card:eq(' + ( j - 1 ) + ')')).fadeIn('slow');
-
-        // hack to slow the process:
-        for (var k = 1; k < 200; i++) {
-            return k;
-        }
-
-      j -= 1; // devaluates j before While loop loops back
-
-    } /* End while loop */
+      } /* End while loop */
+    }
 
     $('li').removeClass('swapping'); // removes pink highlight
 
@@ -123,7 +104,7 @@ function sortReset() {
 // below the sort happens to quickly.
 
 function slowMoRank() {
-  sortRankSlowNumbers($('.card').length);
+  sortRankSlow($('.card').length, 'id');
 }
 
 function slowMoTitle() {
