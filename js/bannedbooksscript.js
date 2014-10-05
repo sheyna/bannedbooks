@@ -42,9 +42,6 @@ function sortRankSlow(m, item) { /* start 1 */
   // sorted = false;
   for (var i = 1; i < m; i++) { /* start 2 */
 
-    // gets value of x so it can be compared in the While loop
-    var x = $('.card:eq(' + i + ')').attr('' + item + '');
-
     // adds pink highlight to the to active books:
     $('.card:eq(' + i + ')').addClass('swapping').fadeIn('slow');
     $('.card:eq(' + ( i - 1 ) + ')').addClass('swapping').fadeIn('slow');
@@ -52,11 +49,12 @@ function sortRankSlow(m, item) { /* start 1 */
     // sets j so it can later be compared to x in the while loop:
     var j = i;
 
+    // FOR NUMBERS:
     if (item == 'id') {
       // gets value of y so it can be compared in the While loop
       var y = parseInt($('.card:eq(' + i + ')').attr('id'));
 
-      // puts "y" ahead of the book before it if it is greater than x:
+      // puts "y" ahead of the book before it if it is greater than y:
       while (j > 0 && parseInt($('.card:eq(' + ( j - 1 ) + ')').attr('id')) > y) { /* start while loop */
         $('.card:eq(' + j + ')').insertBefore($('.card:eq(' + ( j - 1 ) + ')')).fadeIn('slow');
 
@@ -69,8 +67,11 @@ function sortRankSlow(m, item) { /* start 1 */
 
       } /* End while loop */
 
-    } else {
-        // puts "x" ahead of the book before it if it is greater than x:
+    } else { // FOR LETTERS:
+      // gets value of x so it can be compared in the While loop
+      var x = $('.card:eq(' + i + ')').attr('' + item + '');
+
+      // puts "x" ahead of the book before it if it is greater than x:
       while (j > 0 && $('.card:eq(' + ( j - 1 ) + ')').attr('' + item + '') > x) { /* start while loop */
         $('.card:eq(' + j + ')').insertBefore($('.card:eq(' + ( j - 1 ) + ')')).fadeIn('slow');
 
