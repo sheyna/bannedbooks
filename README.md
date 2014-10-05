@@ -3,7 +3,7 @@
 
 A project for Code Fellows Foundations 1, Oct. 2014
 
-Using two functions I was able to sort the books 3 different ways:
+Using one sorting functions I was able to sort the books 3 different ways:
 * Ordered by numerical rank
 * Alphabetical by title
 * Alphabetical by author’s last name.
