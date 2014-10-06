@@ -49,7 +49,7 @@ function sortRankSlow(m, item) { /* start 1 */
     // sets j so it can later be compared to x in the while loop:
     var j = i;
 
-    // FOR NUMBERS:
+    // FOR NUMBERS -- uses parseInt():
     if (item == 'id') {
       // gets value of y so it can be compared in the While loop
       var y = parseInt($('.card:eq(' + i + ')').attr('id'));
@@ -67,7 +67,7 @@ function sortRankSlow(m, item) { /* start 1 */
 
       } /* End while loop */
 
-    } else { // FOR LETTERS:
+    } else { // FOR LETTERS -- does not use parseInt():
       // gets value of x so it can be compared in the While loop
       var x = $('.card:eq(' + i + ')').attr('' + item + '');
 
@@ -83,7 +83,7 @@ function sortRankSlow(m, item) { /* start 1 */
         j -= 1; // devaluates j before While loop loops back
 
       } /* End while loop */
-    }
+    } /* End if loop */
 
     $('li').removeClass('swapping'); // removes pink highlight
 

@@ -12,5 +12,7 @@ I worked 2 and half hours with Dale and another TA whose name I didn’t catch a
 
 Someone in the computing universe really needs to invent a sleep() function to tell the computer to just pause for a moment. Dale suggested a hack around this by putting an unrelated For loop in the middle of the code where I want to computer to slow down. In other words, I'm slowing the computer down by handing it too much information to process at the that moment. Oddly, this froze the code and required the user to continually hit the button to continue the sort. Because of this I was able to get setInterval() to work by continually activating the function to complete the search (if you remove the For loop from the middle of the “sortRankSlow” function it finishes the entire sort instantaneously). I was then able use clearInterval() to turn off the interval.
 
+In order to get the code to handle sorting both numbers and letters I had to add an If loop and thus duplicate the while loop. I tried to make the interior of the while loop it's own function so as not to duplicate the same code, but this caused the code to either malfunction or speed up depending on how I tried it. I was forced to leave the code duplicated.
+
 ###Image note
 I designed the covers and graphics using free images from [Morguefile.com](http://www.morguefile.com/).
