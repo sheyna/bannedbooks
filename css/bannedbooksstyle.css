@@ -37,7 +37,7 @@ li { /* the book cover "squares" */
   font-family: 'Gafata', sans-serif;
   font-size: 11px;
   text-align: center;
-  color: #755e57;
+  color: #755e57; /* brown */
 }
 ul { /* list the li will be inserted into by the JS file */
   list-style-type: none;
@@ -56,7 +56,7 @@ ul { /* list the li will be inserted into by the JS file */
   margin-right: -5px;
   margin-left: -10px;
 }
-.bookcover { /* thumbnal book covers */
+.bookcover { /* thumbnail book covers */
   position: relative;
   vertical-align: text-top;
   width: 98px;
